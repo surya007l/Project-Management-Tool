@@ -205,6 +205,6 @@ The **Dashboard** page gives an overview of project and task progress using real
 **Surya LN Pradhan**  
 
 ### 🔗 Connect with Me
-- **GitHub:** [https://github.com/<surya007l>](https://github.com/<surya007l>)
-- **LinkedIn:** [https://www.linkedin.com/in/<surya-ln-pradhan-356232302/>/](https://www.linkedin.com/in/<surya-ln-pradhan-356232302/>/)
+- **GitHub:** [https://github.com/<surya007l>]
+- **LinkedIn:** [https://www.linkedin.com/in/<surya-ln-pradhan-356232302/>/]
 - **Email:** <suryalnpradhan999@gmail.com>

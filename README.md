@@ -193,8 +193,8 @@ The **Dashboard** page gives an overview of project and task progress using real
 ✅ *These improvements can be added incrementally to evolve this project into a production-grade project management platform.*
 
 
-🧾 License
+## 🧾 License
 
-This project was built for internship evaluation purposes.
-You may reuse and extend it for learning or educational use.
+- This project was built for internship evaluation purposes.
+- You may reuse and extend it for learning or educational use.
 

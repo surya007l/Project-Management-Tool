@@ -198,3 +198,13 @@ The **Dashboard** page gives an overview of project and task progress using real
 - This project was built for internship evaluation purposes.
 - You may reuse and extend it for learning or educational use.
 
+---
+
+## 👨‍💻 Author
+
+**Surya LN Pradhan**  
+
+### 🔗 Connect with Me
+- **GitHub:** [https://github.com/<surya007l>](https://github.com/<surya007l>)
+- **LinkedIn:** [https://www.linkedin.com/in/<surya-ln-pradhan-356232302/>/](https://www.linkedin.com/in/<surya-ln-pradhan-356232302/>/)
+- **Email:** <suryalnpradhan999@gmail.com>

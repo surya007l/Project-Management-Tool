@@ -81,61 +81,62 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-🔗 API Endpoints Summary
-🧍‍♂️ User Module (/api/users)
-Method	Endpoint	Description	Auth
-POST	/api/users/register	Register a new user (Admin, Manager, Developer)	Public
-POST	/api/users/login	Login and get JWT token	Public
 
-📁 Project Module (/api/projects)
-Method	Endpoint	Description	Role
-POST	/api/projects/	Create a new project	Manager / Admin
-GET	/api/projects/	Get all projects	Any logged-in user
-GET	/api/projects/{id}	Get a specific project	Any logged-in user
+## 🔗 API Endpoint Summary
 
-✅ Task Module (/api/tasks)
-Method	Endpoint	Description	Role
-POST	/api/tasks/	Create a new task	Manager / Admin
-GET	/api/tasks/	Get all tasks	Any logged-in user
-GET	/api/tasks?project_id=1	Get tasks for a specific project	Any logged-in user
+### 📁 Project Module (`/api/projects`)
+
+| Method | Endpoint | Description | Required Role | Request Body Example | Response Example |
+|---------|-----------|-------------|----------------|----------------------|------------------|
+| **POST** | `/api/projects/` | Create a new project | Manager / Admin | ```json { "name": "Website Revamp", "description": "Rebuild company site", "deadline": "2025-12-31T00:00:00", "manager_id": 2 } ``` | ```json { "id": 1, "name": "Website Revamp", "description": "Rebuild company site", "deadline": "2025-12-31T00:00:00", "status": "Not Started", "manager_id": 2 } ``` |
+| **GET** | `/api/projects/` | Fetch all projects | Any logged-in user | — | ```json [ { "id": 1, "name": "Website Revamp", "status": "Not Started" } ] ``` |
+| **GET** | `/api/projects/{id}` | Fetch a single project by ID | Any logged-in user | — | ```json { "id": 1, "name": "Website Revamp", "description": "Rebuild company site", "status": "Not Started" } ``` |
+| **PUT** *(optional)* | `/api/projects/{id}` | Update project details (status, name, deadline) | Manager / Admin | ```json { "status": "In Progress" } ``` | ```json { "message": "Project updated successfully" } ``` |
+| **DELETE** *(optional)* | `/api/projects/{id}` | Delete a project | Admin only | — | ```json { "message": "Project deleted successfully" } ``` |
+
+---
+
+### ✅ Task Module (`/api/tasks`)
+
+| Method | Endpoint | Description | Required Role | Request Body Example | Response Example |
+|---------|-----------|-------------|----------------|----------------------|------------------|
+| **POST** | `/api/tasks/` | Create a new task under a project | Manager / Admin | ```json { "title": "Frontend UI", "description": "Build login form", "deadline": "2025-11-15T00:00:00", "assigned_to": 3, "project_id": 1 } ``` | ```json { "id": 1, "title": "Frontend UI", "description": "Build login form", "status": "To Do", "assigned_to": 3, "project_id": 1 } ``` |
+| **GET** | `/api/tasks/` | Fetch all tasks | Any logged-in user | — | ```json [ { "id": 1, "title": "Frontend UI", "status": "To Do" } ] ``` |
+| **GET** | `/api/tasks?project_id=1` | Fetch all tasks for a specific project | Any logged-in user | — | ```json [ { "id": 1, "title": "Frontend UI", "project_id": 1 } ] ``` |
+| **PUT** *(optional)* | `/api/tasks/{id}` | Update task status or reassign | Manager / Developer | ```json { "status": "In Progress" } ``` | ```json { "message": "Task updated successfully" } ``` |
+| **DELETE** *(optional)* | `/api/tasks/{id}` | Delete a task | Manager / Admin | — | ```json { "message": "Task deleted successfully" } ``` |
+
+---
+
+### 🧠 Notes
+
+- All endpoints (except register/login) require a **JWT Bearer Token** in the header:  
+
 
 📊 Dashboard Metrics (Frontend)
 
 Total projects
-
 Total tasks (To Do, In Progress, Done)
-
 Overdue tasks
-
 Project progress summary
 
 
-Authentication
+🔐 Authentication
 
 JWT-based authentication using Bearer token
-
 Tokens generated on login and verified for protected routes
-
 Roles:
+   Admin — Full access
+   Manager — Create/edit projects and assign tasks
+   Developer — View/update assigned tasks
 
-Admin — Full access
-
-Manager — Create/edit projects and assign tasks
-
-Developer — View/update assigned tasks
-
-Assumptions
+💡 Assumptions
 
 Each project is managed by one Project Manager
-
 Developers are assigned tasks; they cannot create/delete them
-
 Only Managers/Admins can create new projects or tasks
-
 Passwords hashed using bcrypt
-
 JWT stored in localStorage for simplicity
-
 Comments, attachments, and notifications are not implemented yet
 
 🧠 Improvements Possible
